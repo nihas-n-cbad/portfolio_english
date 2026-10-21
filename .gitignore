@@ -1,0 +1,21 @@
+# Logs, local secrets and generated data
+.env
+.env.local
+.logs-*.log
+.frontend.pid
+.backend.pid
+backend/data/
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Builds
+frontend/dist/
+frontend/.tmp/
+backend/dist/
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
