@@ -36,7 +36,7 @@ export function FinanceMockup({ className }: { className?: string }) {
               </p>
             </div>
             <div className="flex items-center gap-1 rounded-full border border-white/10 px-1.5 py-0.5 text-[5px] text-white/50">
-              <span className="size-1 rounded-full bg-emerald-400" />
+              <span className="size-1 animate-pulse-soft rounded-full bg-accent-sage" />
               Live
             </div>
           </div>
@@ -45,17 +45,17 @@ export function FinanceMockup({ className }: { className?: string }) {
             <div className="rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
               <div className="flex items-center justify-between text-[5px] text-white/35">
                 <span>Cash flow</span>
-                <span className="text-emerald-300/80">+12.4%</span>
+                <span className="text-accent-sage">+12.4%</span>
               </div>
               <div className="mt-2 flex h-14 items-end gap-[3px]">
                 {bars.map((height, index) => (
                   <span
                     key={index}
                     className={cn(
-                      'flex-1 rounded-[1px]',
-                      index === bars.length - 3 ? 'bg-cream' : 'bg-white/15',
+                      'flex-1 origin-bottom animate-eq rounded-[1px]',
+                      index === bars.length - 3 ? 'bg-accent-sage' : 'bg-white/15',
                     )}
-                    style={{ height: `${height}%` }}
+                    style={{ height: `${height}%`, animationDelay: `${index * 0.09}s` }}
                   />
                 ))}
               </div>
@@ -70,7 +70,7 @@ export function FinanceMockup({ className }: { className?: string }) {
             <div className="rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
               <p className="text-[5px] text-white/35">Spending</p>
               <div className="relative mx-auto mt-2 grid size-14 place-items-center">
-                <div className="absolute inset-0 rounded-full bg-[conic-gradient(#ece9e2_0_46%,#8a8a8a_46%_68%,#3a3a3a_68%_100%)]" />
+                <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-accent-sky)_0_46%,#8a8a8a_46%_68%,#3a3a3a_68%_100%)]" />
                 <div className="absolute inset-[6px] rounded-full bg-[#0d0d0d]" />
                 <div className="relative text-center">
                   <p className="text-[8px] font-light text-cream">68%</p>
@@ -126,7 +126,7 @@ export function BrandMockup({ className }: { className?: string }) {
       <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/75 to-transparent" />
       <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#0a0a0a]/85 to-transparent" />
       <div className="absolute inset-x-0 top-0 flex items-center justify-between px-6 pt-6">
-        <span className="text-[0.62rem] font-medium tracking-[0.3em] text-cream/90 uppercase">
+        <span className="text-[0.62rem] font-medium tracking-[0.3em] text-accent-violet uppercase">
           Nexora
         </span>
         <span className="flex gap-3 text-[0.42rem] tracking-[0.16em] text-cream/40 uppercase">
@@ -156,14 +156,14 @@ export function WasteMockup({ className }: { className?: string }) {
             Medi-Waste AI
           </span>
           <span className="flex items-center gap-1 text-[5px] text-white/45">
-            <span className="size-1 rounded-full bg-emerald-400" />
+            <span className="size-1 animate-pulse-soft rounded-full bg-accent-sage" />
             Scanning
           </span>
         </div>
 
         <div className="p-3">
           <div className="relative grid h-24 place-items-center overflow-hidden rounded-md border border-dashed border-white/15 bg-[linear-gradient(140deg,#171717,#0d0d0d)]">
-            <div className="absolute inset-x-6 top-0 h-px bg-cream/20" />
+            <div className="absolute inset-x-6 top-0 h-px animate-sweep bg-accent-amber/70" />
             <div className="text-center">
               <p className="text-[5px] tracking-[0.16em] text-white/35 uppercase">Bag detected</p>
               <p className="mt-1 text-[10px] font-light tracking-[0.02em] text-cream">TX-04 · 12:40</p>
@@ -180,15 +180,15 @@ export function WasteMockup({ className }: { className?: string }) {
           </div>
 
           <div className="mt-2 space-y-[5px]">
-            {streams.map((stream) => (
+            {streams.map((stream, index) => (
               <div key={stream.label} className="flex items-center gap-2">
                 <span className={cn('size-1.5 rounded-[1px]', stream.tone)} />
                 <span className="w-9 text-[5px] text-white/55">{stream.label}</span>
                 <span className="flex-1">
                   <span className="block h-[2px] rounded-full bg-white/10">
                     <span
-                      className="block h-full rounded-full bg-cream/70"
-                      style={{ width: `${stream.value}%` }}
+                      className="block h-full animate-grow origin-left rounded-full bg-accent-amber/80"
+                      style={{ width: `${stream.value}%`, animationDelay: `${index * 0.08}s` }}
                     />
                   </span>
                 </span>
@@ -233,11 +233,11 @@ export function ExpenseMockup({ className }: { className?: string }) {
             <p className="text-[16px] leading-none font-light tracking-[-0.02em] text-cream">
               ₹18,540
             </p>
-            <span className="text-[5px] text-emerald-300/80">+6.2%</span>
+            <span className="text-[5px] text-accent-sage">+6.2%</span>
           </div>
 
           <div className="mt-3 space-y-2">
-            {rows.map((row) => (
+            {rows.map((row, index) => (
               <div key={row.label}>
                 <div className="flex items-center justify-between text-[5px]">
                   <span className="text-white/55">{row.label}</span>
@@ -245,8 +245,8 @@ export function ExpenseMockup({ className }: { className?: string }) {
                 </div>
                 <span className="mt-1 block h-[3px] rounded-full bg-white/[0.08]">
                   <span
-                    className="block h-full rounded-full bg-cream/75"
-                    style={{ width: `${row.value * 2}%` }}
+                    className="block h-full origin-left animate-grow rounded-full bg-accent-sky/80"
+                    style={{ width: `${row.value * 2}%`, animationDelay: `${index * 0.1}s` }}
                   />
                 </span>
               </div>
@@ -293,7 +293,7 @@ export function UpiMockup({ className }: { className?: string }) {
             <div className="mt-3 rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
               <div className="flex items-center justify-between text-[4.5px] tracking-[0.1em] text-white/35 uppercase">
                 <span>Risk</span>
-                <span className="text-[#e0c98a]">62%</span>
+                <span className="animate-pulse-soft text-accent-amber">62%</span>
               </div>
               <div className="mt-1.5 flex gap-[2px]">
                 {Array.from({ length: 12 }).map((_, index) => (
@@ -301,7 +301,11 @@ export function UpiMockup({ className }: { className?: string }) {
                     key={index}
                     className={cn(
                       'h-1 flex-1 rounded-[1px]',
-                      index < 4 ? 'bg-emerald-400/70' : index < 8 ? 'bg-[#d9b763]' : 'bg-white/10',
+                      index < 4
+                        ? 'bg-accent-sage/70'
+                        : index < 8
+                          ? 'bg-accent-amber/80'
+                          : 'bg-white/10',
                     )}
                   />
                 ))}
@@ -359,7 +363,7 @@ export function WellnessMockup({ className }: { className?: string }) {
             </p>
 
             <div className="relative mx-auto mt-3 grid size-[92px] place-items-center">
-              <div className="absolute inset-0 rounded-full bg-[conic-gradient(#ece9e2_0_72%,rgba(255,255,255,0.1)_72%_100%)]" />
+              <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-accent-teal)_0_72%,rgba(255,255,255,0.1)_72%_100%)]" />
               <div className="absolute inset-[7px] rounded-full bg-[#121212]" />
               <div className="relative text-center">
                 <p className="text-[20px] leading-none font-light tracking-[-0.03em] text-cream">
