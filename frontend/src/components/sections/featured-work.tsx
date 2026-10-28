@@ -2,7 +2,14 @@ import { useState } from 'react'
 
 import { site } from '@/data/site'
 import { ArrowRight, ArrowUpRight } from '@/components/icons'
-import { BrandMockup, FinanceMockup, WellnessMockup } from '@/components/mockups'
+import {
+  BrandMockup,
+  ExpenseMockup,
+  FinanceMockup,
+  UpiMockup,
+  WasteMockup,
+  WellnessMockup,
+} from '@/components/mockups'
 import { Reveal, SectionLabel } from '@/components/reveal'
 import {
   Dialog,
@@ -30,6 +37,42 @@ function ProjectVisual({ project, large = false }: { project: Project; large?: b
       )}
 
       {project.visual === 'brand' && <BrandMockup />}
+
+      {project.visual === 'waste' && (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_20%_0%,#1e1e1e_0%,#121212_58%,#0b0b0b_100%)]" />
+          <WasteMockup
+            className={cn(
+              'top-[16%] right-[8%]',
+              large ? 'top-[10%] right-[34%]' : 'group-hover:-translate-y-2',
+            )}
+          />
+        </>
+      )}
+
+      {project.visual === 'expense' && (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(115%_100%_at_78%_4%,#1c1c1c_0%,#111_60%,#0b0b0b_100%)" />
+          <ExpenseMockup
+            className={cn(
+              'top-[18%] right-[9%]',
+              large ? 'top-[12%] right-[35%]' : 'group-hover:-translate-y-2',
+            )}
+          />
+        </>
+      )}
+
+      {project.visual === 'upi' && (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_24%_6%,#212121_0%,#131313_58%,#0b0b0b_100%)" />
+          <UpiMockup
+            className={cn(
+              'top-[14%] right-[11%]',
+              large ? 'top-[8%] right-[36%]' : 'group-hover:-translate-y-2',
+            )}
+          />
+        </>
+      )}
 
       {project.visual === 'wellness' && (
         <>

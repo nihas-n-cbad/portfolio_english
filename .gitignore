@@ -2,6 +2,7 @@
 .env
 .env.local
 .logs-*.log
+.devlogs/
 .frontend.pid
 .backend.pid
 backend/data/
@@ -12,6 +13,7 @@ node_modules/
 
 # Builds
 frontend/dist/
+screenshots/
 frontend/.tmp/
 backend/dist/
 

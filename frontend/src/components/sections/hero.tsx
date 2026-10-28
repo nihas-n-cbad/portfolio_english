@@ -8,35 +8,43 @@ import { Button } from '@/components/ui/button'
 
 const statIcons = { sparkle: Sparkle, users: Users, trophy: Trophy, globe: Globe } as const
 
-function Portrait({ className }: { className?: string }) {
+function NameCard({ className }: { className?: string }) {
   return (
     <div className={cn('pointer-events-none select-none', className)}>
-      <div className="relative h-full w-full">
-        {/* Orbital hairline behind the portrait */}
+      <div className="relative flex h-full w-full items-center">
+        {/* Orbital hairline behind the card */}
         <div
           aria-hidden
-          className="absolute top-[6%] left-[16%] aspect-square w-[92%] rounded-full border border-white/[0.09]"
+          className="absolute top-[4%] left-[6%] aspect-square w-[88%] rounded-full border border-white/[0.09]"
+        />
+        {/* Light pooled behind the card, echoing the old portrait glow */}
+        <div
+          aria-hidden
+          className="absolute inset-x-[10%] top-[12%] h-[76%] rounded-full bg-[radial-gradient(closest-side,rgba(244,241,234,0.08),transparent)] blur-3xl"
         />
 
-        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,#000_7%,#000_58%,transparent_94%)]">
-          {/* Left edge blends the photograph into the page */}
-          <div className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent_0%,#000_26%,#000_78%,transparent_99%)] md:[mask-image:linear-gradient(to_right,transparent_2%,#000_34%,#000_86%,transparent_100%)]">
-            <img
-              src="/images/portrait.jpg"
-              alt={`${site.name}, ${site.role}`}
-              width={900}
-              height={1349}
-              loading="eager"
-              fetchPriority="high"
-              className="h-full w-full object-cover object-[50%_26%] saturate-[0.5] contrast-[1.05] brightness-[0.82]"
-            />
-          </div>
-          {/* Bottom dissolves the torso into shadow */}
-          <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-page via-page/65 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(105%_85%_at_78%_22%,transparent_28%,rgba(10,10,10,0.72)_100%)]" />
+        <div className="relative w-full rounded-2xl border border-line bg-gradient-to-b from-[#161616] via-[#101010] to-[#0b0b0b] p-7 md:p-9 lg:p-10">
+          <p className="text-[0.6rem] font-medium tracking-[0.22em] text-mist-dim uppercase">
+            {site.nameCard.greeting}
+          </p>
+          <p className="mt-3 font-display text-[clamp(2.7rem,9vw,4.4rem)] uppercase leading-[0.9] tracking-[-0.01em] text-cream">
+            {site.nameCard.name}
+          </p>
+
+          <div aria-hidden className="mt-6 h-px w-full bg-line" />
+
+          <p className="mt-5 text-[0.72rem] font-medium tracking-[0.2em] text-cream/90 uppercase">
+            {site.nameCard.detail}
+          </p>
+          <p className="mt-2 max-w-[19rem] text-[0.78rem] leading-[1.6] text-mist">
+            {site.nameCard.note}
+          </p>
+          <p className="mt-5 text-[0.6rem] tracking-[0.16em] text-mist-dim uppercase">
+            {site.nameCard.availability}
+          </p>
         </div>
 
-        <Sparkle className="absolute top-[53%] right-[2%] size-[18px] text-cream/90" />
+        <Sparkle className="absolute top-[2%] right-[4%] size-[18px] text-cream/90" />
       </div>
     </div>
   )
@@ -55,8 +63,8 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36">
       <div className="container-page">
         <div className="relative">
-          {/* Desktop portrait, bleeding into the headline */}
-          <Portrait className="absolute top-[-3.5rem] right-[-1%] hidden h-[clamp(560px,56vw,1040px)] w-[54%] md:block lg:top-[-4rem] lg:w-[51%]" />
+          {/* Desktop name card, held in the right column */}
+          <NameCard className="absolute top-[-1rem] right-[-1%] hidden h-[clamp(420px,40vw,620px)] w-[46%] md:block lg:top-[-2rem] lg:w-[44%]" />
 
           <div className="relative z-10 max-w-full md:max-w-[52vw]">
             <motion.p className="eyebrow" {...rise(0.05)}>
@@ -101,30 +109,10 @@ export function Hero() {
               </a>
             </motion.div>
           </div>
-
-          <motion.div
-            className="absolute right-0 bottom-6 z-10 hidden text-right lg:block"
-            {...rise(0.4)}
-          >
-            <p className="text-[0.58rem] tracking-[0.22em] text-mist-dim uppercase">
-              {site.heroBadge.label}
-            </p>
-            <p className="mt-1.5 text-[1.05rem] font-medium tracking-[0.1em] text-cream uppercase">
-              {site.heroBadge.value}
-            </p>
-            <p className="mt-0.5 text-[0.58rem] tracking-[0.22em] text-mist-dim uppercase">
-              {site.heroBadge.detail} <span aria-hidden>↗</span>
-            </p>
-          </motion.div>
         </div>
 
-        {/* Mobile portrait */}
-        <Portrait className="relative mt-10 h-[clamp(360px,104vw,500px)] w-full md:hidden" />
-
-        <div className="mt-3 flex items-center justify-end gap-2 text-[0.58rem] tracking-[0.2em] text-mist-dim uppercase md:hidden">
-          {site.availability}
-          <span aria-hidden>↗</span>
-        </div>
+        {/* Mobile name card */}
+        <NameCard className="relative mt-10 w-full md:hidden" />
 
         {/* Stats */}
         <motion.div

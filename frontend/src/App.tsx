@@ -3,6 +3,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { Hero } from '@/components/sections/hero'
 import { FeaturedWork } from '@/components/sections/featured-work'
 import { Capabilities, Process } from '@/components/sections/capabilities'
+import { Hobbies } from '@/components/sections/hobbies'
 import { ContactCta } from '@/components/sections/contact-cta'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <FeaturedWork />
         <Capabilities />
         <Process />
+        <Hobbies />
         <ContactCta />
       </main>
 

@@ -139,6 +139,206 @@ export function BrandMockup({ className }: { className?: string }) {
   )
 }
 
+/** Camera-and-risk interface for the medical waste segregation concept. */
+export function WasteMockup({ className }: { className?: string }) {
+  const streams = [
+    { label: 'Yellow', note: 'Infectious', value: 86, tone: 'bg-[#c8b071]' },
+    { label: 'Red', note: 'Anatomical', value: 9, tone: 'bg-[#b56a68]' },
+    { label: 'White', note: 'Sharps', value: 4, tone: 'bg-[#d8d5cd]' },
+    { label: 'Blue', note: 'Glassware', value: 1, tone: 'bg-[#6f8ea3]' },
+  ]
+
+  return (
+    <div className={cn('absolute', className)} aria-hidden>
+      <div className="w-[214px] rotate-[-5deg] rounded-xl border border-white/[0.09] bg-[#0c0c0c] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)]">
+        <div className="flex items-center justify-between border-b border-white/[0.07] px-3 py-2.5">
+          <span className="text-[6px] font-medium tracking-[0.12em] text-cream/85 uppercase">
+            Medi-Waste AI
+          </span>
+          <span className="flex items-center gap-1 text-[5px] text-white/45">
+            <span className="size-1 rounded-full bg-emerald-400" />
+            Scanning
+          </span>
+        </div>
+
+        <div className="p-3">
+          <div className="relative grid h-24 place-items-center overflow-hidden rounded-md border border-dashed border-white/15 bg-[linear-gradient(140deg,#171717,#0d0d0d)]">
+            <div className="absolute inset-x-6 top-0 h-px bg-cream/20" />
+            <div className="text-center">
+              <p className="text-[5px] tracking-[0.16em] text-white/35 uppercase">Bag detected</p>
+              <p className="mt-1 text-[10px] font-light tracking-[0.02em] text-cream">TX-04 · 12:40</p>
+              <p className="text-[4.5px] tracking-[0.1em] text-white/30 uppercase">Ward 6 · 2.4 kg</p>
+            </div>
+            <span className="absolute inset-x-8 bottom-3 h-px bg-cream/15" />
+          </div>
+
+          <div className="mt-2 flex items-center justify-between rounded-md border border-[#6b5a2e]/50 bg-[#231d10] px-2 py-1.5">
+            <span className="text-[4.5px] tracking-[0.14em] text-[#e0c98a] uppercase">AMR risk</span>
+            <span className="text-[5px] font-medium tracking-[0.1em] text-[#e0c98a] uppercase">
+              High · incinerate
+            </span>
+          </div>
+
+          <div className="mt-2 space-y-[5px]">
+            {streams.map((stream) => (
+              <div key={stream.label} className="flex items-center gap-2">
+                <span className={cn('size-1.5 rounded-[1px]', stream.tone)} />
+                <span className="w-9 text-[5px] text-white/55">{stream.label}</span>
+                <span className="flex-1">
+                  <span className="block h-[2px] rounded-full bg-white/10">
+                    <span
+                      className="block h-full rounded-full bg-cream/70"
+                      style={{ width: `${stream.value}%` }}
+                    />
+                  </span>
+                </span>
+                <span className="w-5 text-right text-[4.5px] text-white/35">{stream.value}%</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-2.5 rounded-md bg-cream px-2 py-1.5 text-center">
+            <span className="text-[5px] font-medium tracking-[0.1em] text-[#0b0b0b] uppercase">
+              Log disposal
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/** Month-at-a-glance spending list for the expense tracker concept. */
+export function ExpenseMockup({ className }: { className?: string }) {
+  const rows = [
+    { label: 'Rent', amount: '₹7,800', value: 42 },
+    { label: 'Food', amount: '₹4,260', value: 23 },
+    { label: 'Travel', amount: '₹2,580', value: 14 },
+    { label: 'Other', amount: '₹3,900', value: 21 },
+  ]
+
+  return (
+    <div className={cn('absolute', className)} aria-hidden>
+      <div className="w-[206px] rotate-[4deg] rounded-xl border border-white/[0.09] bg-[#0c0c0c] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)]">
+        <div className="flex items-center justify-between border-b border-white/[0.07] px-3 py-2.5">
+          <span className="text-[6px] font-medium tracking-[0.12em] text-cream/85 uppercase">
+            Spend
+          </span>
+          <span className="text-[5px] tracking-[0.1em] text-white/35 uppercase">August</span>
+        </div>
+
+        <div className="p-3">
+          <p className="text-[5px] tracking-[0.14em] text-white/35 uppercase">Spent this month</p>
+          <div className="mt-1 flex items-end justify-between">
+            <p className="text-[16px] leading-none font-light tracking-[-0.02em] text-cream">
+              ₹18,540
+            </p>
+            <span className="text-[5px] text-emerald-300/80">+6.2%</span>
+          </div>
+
+          <div className="mt-3 space-y-2">
+            {rows.map((row) => (
+              <div key={row.label}>
+                <div className="flex items-center justify-between text-[5px]">
+                  <span className="text-white/55">{row.label}</span>
+                  <span className="text-white/40">{row.amount}</span>
+                </div>
+                <span className="mt-1 block h-[3px] rounded-full bg-white/[0.08]">
+                  <span
+                    className="block h-full rounded-full bg-cream/75"
+                    style={{ width: `${row.value * 2}%` }}
+                  />
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3 flex items-center justify-between rounded-md border border-white/[0.07] bg-white/[0.03] px-2 py-1.5">
+            <span className="text-[4.5px] tracking-[0.12em] text-white/35 uppercase">
+              Budget left
+            </span>
+            <span className="text-[6px] text-cream/90">₹6,460</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/** Payment confirmation with a payee-risk reading for the UPI concept. */
+export function UpiMockup({ className }: { className?: string }) {
+  const signals = [
+    ['New payee', 'no history'],
+    ['Velocity', '3 in 10 min'],
+    ['Device', 'known'],
+  ]
+
+  return (
+    <div className={cn('absolute', className)} aria-hidden>
+      <div className="relative w-[150px] rotate-[6deg] rounded-[24px] border border-white/20 bg-[#0b0b0b] p-[5px] shadow-[0_30px_70px_-18px_rgba(0,0,0,0.95)]">
+        <div className="overflow-hidden rounded-[20px] border border-white/[0.06] bg-[#121212]">
+          <div className="flex justify-center pt-1.5">
+            <span className="h-1 w-9 rounded-full bg-white/15" />
+          </div>
+
+          <div className="px-3 pt-4 pb-4">
+            <p className="text-[4.5px] tracking-[0.14em] text-white/30 uppercase">Paying</p>
+            <p className="mt-1 text-[7px] leading-tight text-cream">
+              Sharma Stores
+              <br />
+              <span className="text-white/40">@okhdfc</span>
+            </p>
+            <p className="mt-2 text-[15px] leading-none font-light text-cream">₹2,400</p>
+
+            <div className="mt-3 rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
+              <div className="flex items-center justify-between text-[4.5px] tracking-[0.1em] text-white/35 uppercase">
+                <span>Risk</span>
+                <span className="text-[#e0c98a]">62%</span>
+              </div>
+              <div className="mt-1.5 flex gap-[2px]">
+                {Array.from({ length: 12 }).map((_, index) => (
+                  <span
+                    key={index}
+                    className={cn(
+                      'h-1 flex-1 rounded-[1px]',
+                      index < 4 ? 'bg-emerald-400/70' : index < 8 ? 'bg-[#d9b763]' : 'bg-white/10',
+                    )}
+                  />
+                ))}
+              </div>
+              <p className="mt-2 text-[4.5px] leading-[1.5] text-white/45">
+                First payment to this payee. Confirm the name before you approve.
+              </p>
+            </div>
+
+            <div className="mt-2 space-y-1">
+              {signals.map(([label, note]) => (
+                <div key={label} className="flex items-center justify-between">
+                  <span className="text-[4.5px] text-white/45">{label}</span>
+                  <span className="text-[4px] text-white/25">{note}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-2.5 grid grid-cols-2 gap-1">
+              <div className="rounded-md border border-white/15 py-1.5 text-center">
+                <span className="text-[4.5px] tracking-[0.1em] text-white/50 uppercase">
+                  Cancel
+                </span>
+              </div>
+              <div className="rounded-md bg-cream py-1.5 text-center">
+                <span className="text-[4.5px] font-medium tracking-[0.1em] text-[#0b0b0b] uppercase">
+                  Verify
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /** Phone screen for the wellness companion concept. */
 export function WellnessMockup({ className }: { className?: string }) {
   return (

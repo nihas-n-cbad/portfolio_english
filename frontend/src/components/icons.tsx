@@ -1,3 +1,4 @@
+import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
 
 /** Four-point editorial sparkle used across the hero and CTA. */
@@ -144,7 +145,8 @@ export function Monogram({ className }: { className?: string }) {
       className={cn('font-serif text-[1.65rem] leading-none tracking-[-0.04em] text-cream', className)}
       aria-hidden
     >
-      A<span className="italic">V</span>
+      {site.monogram.slice(0, 1)}
+      <span className="italic">{site.monogram.slice(1)}</span>
     </span>
   )
 }

@@ -4,15 +4,20 @@
  */
 
 export const site = {
-  monogram: 'AV',
-  name: 'Your Name',
+  monogram: 'NN',
+  name: 'Nihas N',
   role: 'Computer Science Engineer',
-  availability: 'Open to full-time roles',
   eyebrow: 'Computer science, applied',
   headline: ['Computer', 'Science', 'Engineer'],
   intro:
     'I build fast, reliable software — from database schema and API design through to the last pixel of the interface.',
-  heroBadge: { label: 'Available for', value: 'Full-time', detail: 'Roles' },
+  nameCard: {
+    greeting: "Hi, I'm",
+    name: 'Nihas.N',
+    detail: 'VIT CS student',
+    note: 'B.Tech Computer Science · Vellore Institute of Technology',
+    availability: 'Open to full-time roles & internships',
+  },
   email: 'nihas.n2026@vitstudent.ac.in',
   emailAlt: 'nihasraihan8@gmail.com',
   phone: '+91 9400503008',
@@ -22,6 +27,7 @@ export const site = {
     { label: 'Work', href: '#work' },
     { label: 'Skills', href: '#capabilities' },
     { label: 'About', href: '#about' },
+    { label: 'Hobbies', href: '#hobbies' },
     { label: 'Contact', href: '#contact' },
   ],
   labels: {
@@ -31,6 +37,9 @@ export const site = {
     tools: 'Tools & Technologies',
     certifications: 'Certifications & Education',
     process: 'My Engineering Process',
+    hobbies: 'Hobbies & Achievements',
+    hobbiesOnly: 'Hobbies',
+    achievementsOnly: 'Achievements',
   },
   stats: [
     { value: '4+', label: 'Years coding', icon: 'sparkle' },
@@ -68,6 +77,36 @@ export const site = {
       summary:
         'A cross-platform activity app with background step tracking, offline-first sync against a GraphQL API, and charts that hold 60 fps on mid-range Android hardware.',
       tags: ['React Native', 'GraphQL', 'Offline sync'],
+    },
+    {
+      title: 'AI Medi-Waste\n& AMR Disposal',
+      category: 'Applied Machine Learning',
+      type: 'Computer Vision · Healthcare',
+      visual: 'waste',
+      year: '2025',
+      summary:
+        'A medical-waste system that classifies each bag by colour-coded stream from a phone camera, then layers antimicrobial-resistance risk on top so disposal routes are chosen before waste leaves the ward.',
+      tags: ['PyTorch', 'CNNs', 'AMR risk'],
+    },
+    {
+      title: 'Expense\nTracker',
+      category: 'Full-Stack Engineering',
+      type: 'React · Node · Charts',
+      visual: 'expense',
+      year: '2025',
+      summary:
+        'A personal spending tracker with category budgets, monthly rollups and charts that stay readable on a phone — importable statements in, clear weekly answers out.',
+      tags: ['React', 'Express', 'PostgreSQL'],
+    },
+    {
+      title: 'UPI Risk\nGuidance',
+      category: 'Fintech Engineering',
+      type: 'Python · Rules · Risk',
+      visual: 'upi',
+      year: '2024',
+      summary:
+        'A risk-guiding layer for UPI payments: it scores each payee against velocity, device and fraud signals, then explains the risk in plain language before the user confirms a transfer.',
+      tags: ['Python', 'FastAPI', 'Risk scoring'],
     },
   ],
   capabilities: [
@@ -163,6 +202,17 @@ export const site = {
       icon: 'rocket',
     },
   ],
+  hobbies: ['Chess', 'Music', 'Cricket', 'Football', 'Gym'],
+  achievements: [
+    { label: 'Class XII percentage', value: '90%' },
+    { label: 'Class X percentage', value: '94.2%' },
+    { label: 'National Science Olympiad', value: 'Qualifier' },
+    { label: 'Inter-school chess champion', value: 'Winner' },
+    { label: 'Inter-school shot put', value: 'Winner' },
+    { label: 'School proficiency holder, 9th', value: 'Honours' },
+  ],
+  processIntro:
+    'I started coding in the 9th standard, and my interest in building things — and discovering how software really works — has only grown since. I regularly solve problems on LeetCode and try to take on leadership roles in the projects I am involved in. I am looking for a developer role where I can build, discover, contribute and grow.',
   cta: {
     eyebrow: 'Have something in mind?',
     lines: ["Let's build", 'something', 'remarkable'],

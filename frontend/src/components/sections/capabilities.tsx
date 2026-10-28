@@ -34,6 +34,25 @@ const processIcons: Record<string, LucideIcon> = {
   rocket: Rocket,
 }
 
+/** One muted accent per capability, keyed by its icon. */
+const capabilityTones: Record<string, string> = {
+  layers: 'text-accent-sky',
+  server: 'text-accent-violet',
+  database: 'text-accent-teal',
+  cloud: 'text-accent-amber',
+  shield: 'text-accent-sage',
+  gauge: 'text-accent-rose',
+}
+
+/** Tones follow the fixed five-step process order in site.process. */
+const stepTones = [
+  { icon: 'text-accent-amber', wash: 'bg-accent-amber/10 ring-accent-amber/20' },
+  { icon: 'text-accent-sky', wash: 'bg-accent-sky/10 ring-accent-sky/20' },
+  { icon: 'text-accent-sage', wash: 'bg-accent-sage/10 ring-accent-sage/20' },
+  { icon: 'text-accent-teal', wash: 'bg-accent-teal/10 ring-accent-teal/20' },
+  { icon: 'text-accent-violet', wash: 'bg-accent-violet/10 ring-accent-violet/20' },
+]
+
 const toolMarks: Record<string, { glyph: string; className: string }> = {
   react: { glyph: 'R', className: 'bg-[#082c38] text-[#61dafb]' },
   ts: { glyph: 'TS', className: 'bg-[#132b45] text-[#5b9ce0]' },
@@ -72,8 +91,11 @@ export function Capabilities() {
                     )}
                   >
                     <Icon
-                      className="mt-0.5 size-[26px] shrink-0 text-cream/85 transition-transform duration-500 group-hover:-translate-y-0.5"
-                      strokeWidth={1.1}
+                      className={cn(
+                        'mt-0.5 size-[26px] shrink-0 transition-transform duration-500 group-hover:-translate-y-0.5',
+                        capabilityTones[capability.icon] ?? 'text-cream/85',
+                      )}
+                      strokeWidth={1.3}
                       aria-hidden
                     />
                     <div>
@@ -170,10 +192,17 @@ export function Process() {
         <SectionLabel>{site.labels.process}</SectionLabel>
       </Reveal>
 
+      <Reveal delay={0.04} className="mt-5">
+        <p className="max-w-[46rem] text-[0.88rem] leading-[1.75] text-mist">
+          {site.processIntro}
+        </p>
+      </Reveal>
+
       <Reveal delay={0.06} className="mt-6">
         <ol className="grid overflow-hidden rounded-2xl border border-line bg-surface/60 sm:grid-cols-2 lg:grid-cols-5">
           {site.process.map((step, index) => {
             const Icon = processIcons[step.icon] ?? Target
+            const tone = stepTones[index] ?? stepTones[0]
             return (
               <li
                 key={step.step}
@@ -198,11 +227,21 @@ export function Process() {
                   <p className="mt-3 text-[0.74rem] leading-[1.6] text-mist">{step.description}</p>
                 </div>
                 <div className="flex items-end justify-between">
-                  <Icon
-                    className="size-[26px] text-cream/80 transition-transform duration-500 group-hover:-translate-y-0.5"
-                    strokeWidth={1.1}
+                  <span
+                    className={cn(
+                      'grid size-10 place-items-center rounded-full ring-1 ring-inset transition-colors duration-400',
+                      tone.wash,
+                    )}
                     aria-hidden
-                  />
+                  >
+                    <Icon
+                      className={cn(
+                        'size-[21px] transition-transform duration-500 group-hover:-translate-y-0.5',
+                        tone.icon,
+                      )}
+                      strokeWidth={1.3}
+                    />
+                  </span>
                   {index < site.process.length - 1 && (
                     <span className="hidden text-mist-dim/70 lg:block" aria-hidden>
                       <svg viewBox="0 0 28 8" fill="none" className="h-2 w-7">
