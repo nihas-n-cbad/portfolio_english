@@ -112,28 +112,116 @@ export function FinanceMockup({ className }: { className?: string }) {
   )
 }
 
-/** Chrome ribbon + studio wordmark for the branding project. */
-export function BrandMockup({ className }: { className?: string }) {
+/** Catalogue-and-circulation screen for the library management concept. */
+export function LibraryMockup({ className }: { className?: string }) {
+  const books = [
+    { title: 'Operating Systems', author: 'Galvin', code: 'QA76.7', due: 'On loan', tone: 'bg-accent-amber' },
+    { title: 'Clean Architecture', author: 'Martin', code: 'QA76.76', due: 'Available', tone: 'bg-accent-sage' },
+    { title: 'Designing Data-Intensive…', author: 'Kleppmann', code: 'QA76.9', due: 'Due today', tone: 'bg-accent-violet' },
+  ]
+
   return (
-    <div className={cn('absolute inset-0', className)} aria-hidden>
-      <img
-        src="/images/chrome.jpg"
-        alt=""
-        loading="lazy"
-        className="h-full w-full scale-[1.24] object-cover object-[74%_44%] grayscale contrast-[1.05] brightness-[0.5]"
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_16%_6%,rgba(10,10,10,0.72)_0%,rgba(10,10,10,0.9)_58%,#0a0a0a_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/75 to-transparent" />
-      <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#0a0a0a]/85 to-transparent" />
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between px-6 pt-6">
-        <span className="text-[0.62rem] font-medium tracking-[0.3em] text-accent-violet uppercase">
-          Nexora
-        </span>
-        <span className="flex gap-3 text-[0.42rem] tracking-[0.16em] text-cream/40 uppercase">
-          <span>Docs</span>
-          <span>API</span>
-          <span>Pricing</span>
-        </span>
+    <div className={cn('absolute', className)} aria-hidden>
+      <div className="w-[106%] rotate-[-5deg] overflow-hidden rounded-xl border border-white/[0.09] bg-[#0c0c0c] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.9)]">
+        {/* window chrome */}
+        <div className="flex items-center justify-between border-b border-white/[0.07] px-3 py-2.5">
+          <div className="flex items-center gap-1.5">
+            <span className="grid size-3 place-items-center rounded-[3px] bg-accent-violet text-[5px] font-semibold text-black">
+              L
+            </span>
+            <span className="text-[6px] font-medium tracking-[0.1em] text-cream/80 uppercase">
+              Library
+            </span>
+          </div>
+          <div className="flex items-center gap-2.5 text-[5px] tracking-[0.08em] text-white/35 uppercase">
+            <span className="text-cream/70">Catalogue</span>
+            <span>Members</span>
+            <span>Reserves</span>
+          </div>
+        </div>
+
+        <div className="p-3">
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-[5px] tracking-[0.14em] text-white/35 uppercase">
+                Books in circulation
+              </p>
+              <p className="mt-1 text-[15px] font-light tracking-[-0.02em] text-cream">
+                12,480
+              </p>
+            </div>
+            <div className="flex items-center gap-1 rounded-full border border-white/10 px-1.5 py-0.5 text-[5px] text-white/50">
+              <span className="size-1 animate-pulse-soft rounded-full bg-accent-sage" />
+              Live
+            </div>
+          </div>
+
+          <div className="mt-3 grid grid-cols-[1.55fr_1fr] gap-2">
+            <div className="rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
+              <div className="flex items-center justify-between text-[5px] text-white/35">
+                <span>Issued this week</span>
+                <span className="text-accent-sage">+8.1%</span>
+              </div>
+              <div className="mt-2 flex h-14 items-end gap-[3px]">
+                {bars.map((height, index) => (
+                  <span
+                    key={index}
+                    className={cn(
+                      'flex-1 origin-bottom animate-eq rounded-[1px]',
+                      index === bars.length - 4 ? 'bg-accent-violet' : 'bg-white/15',
+                    )}
+                    style={{ height: `${height}%`, animationDelay: `${index * 0.09}s` }}
+                  />
+                ))}
+              </div>
+              <div className="mt-2 flex justify-between text-[4px] tracking-wide text-white/25 uppercase">
+                <span>Mon</span>
+                <span>Wed</span>
+                <span>Fri</span>
+                <span>Sun</span>
+              </div>
+            </div>
+
+            <div className="rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
+              <p className="text-[5px] text-white/35">Shelf fill</p>
+              <div className="relative mx-auto mt-2 grid size-14 place-items-center">
+                <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-accent-violet)_0_64%,#8a8a8a_64%_82%,#3a3a3a_82%_100%)]" />
+                <div className="absolute inset-[6px] rounded-full bg-[#0d0d0d]" />
+                <div className="relative text-center">
+                  <p className="text-[8px] font-light text-cream">82%</p>
+                  <p className="text-[4px] text-white/30">on shelves</p>
+                </div>
+              </div>
+              <div className="mt-2 space-y-[3px]">
+                <div className="h-[2px] w-full rounded-full bg-white/10" />
+                <div className="h-[2px] w-2/3 rounded-full bg-white/[0.07]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-2 rounded-md border border-white/[0.07] bg-white/[0.02] p-2">
+            <div className="flex items-center justify-between text-[5px] text-white/35">
+              <span>Recent checkouts</span>
+              <span className="text-white/25">View all</span>
+            </div>
+            <div className="mt-1.5 space-y-1.5">
+              {books.map((book) => (
+                <div key={book.code} className="flex items-center gap-2">
+                  <span className={cn('size-2.5 rounded-[3px]', book.tone)} />
+                  <span className="flex-1 truncate text-[5px] text-white/60">{book.title}</span>
+                  <span className="text-[4.5px] text-white/30">{book.author}</span>
+                  <span className="text-[4.5px] text-white/25">{book.code}</span>
+                  <span className="h-[2px] w-4 rounded-full bg-white/10">
+                    <span
+                      className="block h-full rounded-full bg-cream/50"
+                      style={{ width: book.due === 'Available' ? '88%' : '46%' }}
+                    />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -343,8 +431,8 @@ export function UpiMockup({ className }: { className?: string }) {
   )
 }
 
-/** Phone screen for the wellness companion concept. */
-export function WellnessMockup({ className }: { className?: string }) {
+/** Phone screen for the calorie tracker concept. */
+export function CalorieMockup({ className }: { className?: string }) {
   return (
     <div className={cn('absolute', className)} aria-hidden>
       <div className="relative w-[166px] rotate-[-7deg] rounded-[26px] border border-white/20 bg-[#0b0b0b] p-[5px] shadow-[0_30px_70px_-18px_rgba(0,0,0,0.95)]">
@@ -357,29 +445,29 @@ export function WellnessMockup({ className }: { className?: string }) {
           <div className="px-3 pt-4 pb-4">
             <p className="text-[6px] text-white/35">Hello, Alex</p>
             <p className="mt-1 text-[8px] leading-tight text-cream">
-              Your Total Steps
+              Calories Left
               <br />
               Today
             </p>
 
             <div className="relative mx-auto mt-3 grid size-[92px] place-items-center">
-              <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-accent-teal)_0_72%,rgba(255,255,255,0.1)_72%_100%)]" />
+              <div className="absolute inset-0 rounded-full bg-[conic-gradient(var(--color-accent-teal)_0_64%,rgba(255,255,255,0.1)_64%_100%)]" />
               <div className="absolute inset-[7px] rounded-full bg-[#121212]" />
               <div className="relative text-center">
                 <p className="text-[20px] leading-none font-light tracking-[-0.03em] text-cream">
-                  72%
+                  640
                 </p>
                 <p className="mt-1 text-[4.5px] tracking-[0.12em] text-white/35 uppercase">
-                  of daily goal
+                  of 1,900 kcal
                 </p>
               </div>
             </div>
 
             <div className="mt-4 flex justify-between text-center">
               {[
-                ['1,240', 'Steps'],
-                ['18', 'Active'],
-                ['76', 'BPM'],
+                ['82g', 'Protein'],
+                ['148g', 'Carbs'],
+                ['54g', 'Fat'],
               ].map(([value, label]) => (
                 <div key={label}>
                   <p className="text-[7px] text-cream/85">{value}</p>
@@ -390,8 +478,8 @@ export function WellnessMockup({ className }: { className?: string }) {
 
             <div className="mt-3 space-y-1.5">
               {[
-                ['Morning run', '32 min'],
-                ['Stretch', '8 min'],
+                ['Oatmeal & berries', '420 kcal'],
+                ['Chicken bowl', '610 kcal'],
               ].map(([label, value]) => (
                 <div
                   key={label}
@@ -408,7 +496,7 @@ export function WellnessMockup({ className }: { className?: string }) {
 
             <div className="mt-3 rounded-md bg-cream px-2 py-1.5 text-center">
               <span className="text-[5px] font-medium tracking-[0.08em] text-[#0b0b0b] uppercase">
-                Start workout
+                Log a meal
               </span>
             </div>
           </div>

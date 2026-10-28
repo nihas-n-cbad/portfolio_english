@@ -88,7 +88,14 @@ function ChessPreview({ accent }: { accent: typeof defaultAccent }) {
 }
 
 function MusicPreview({ accent }: { accent: typeof defaultAccent }) {
-  const bars = [0.3, 0.75, 0.5, 1, 0.6, 0.85, 0.4]
+  /* A quiet frequency spectrum: thin bars scale out from a central axis, kept
+     to two close hues so it reads as a live meter rather than a light show. */
+  const spectrum = [
+    { bar: 'bg-accent-violet/70', glow: 'text-accent-violet/50' },
+    { bar: 'bg-accent-sky/60', glow: 'text-accent-sky/40' },
+  ]
+  const heights = [0.32, 0.55, 0.4, 0.78, 0.5, 1, 0.62, 0.86, 0.44, 0.7, 0.95, 0.52, 0.8, 0.36, 0.66, 0.9, 0.48, 0.74, 0.58, 0.4, 0.68, 0.42]
+
   return (
     <div className="flex h-full flex-col justify-center gap-3 px-4">
       <div className="flex items-center gap-2.5">
@@ -106,14 +113,41 @@ function MusicPreview({ accent }: { accent: typeof defaultAccent }) {
           <p className="truncate text-[0.5rem] text-mist-dim">Lo-fi · 42 tracks</p>
         </div>
       </div>
-      <div className="flex h-9 items-end gap-1">
-        {bars.map((height, index) => (
-          <span
-            key={index}
-            className={cn('w-full origin-bottom rounded-full animate-eq', accent.fill)}
-            style={{ height: `${height * 100}%`, animationDelay: `${index * 0.12}s` }}
-          />
-        ))}
+
+      <div className="relative h-14">
+        {/* faint grid behind the spectrum */}
+        <span
+          className="absolute inset-0 rounded-[6px] opacity-60"
+          aria-hidden
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)',
+            backgroundSize: '9px 9px',
+          }}
+        />
+        {/* central axis line */}
+        <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-white/10" aria-hidden />
+        {/* mirrored frequency bars — thin, low-contrast, softly lit */}
+        <div className="absolute inset-0 flex items-center justify-center gap-[3px]">
+          {heights.map((height, index) => {
+            const tone = spectrum[index % spectrum.length]
+            return (
+              <span
+                key={index}
+                className={cn(
+                  'w-[2px] origin-center animate-eq rounded-full drop-shadow-[0_0_2px_currentColor]',
+                  tone.bar,
+                  tone.glow,
+                )}
+                style={{
+                  height: `${height * 72}%`,
+                  animationDelay: `${(index % 7) * 0.16}s`,
+                  animationDuration: `${1.1 + (index % 5) * 0.22}s`,
+                }}
+              />
+            )
+          })}
+        </div>
       </div>
     </div>
   )

@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { site } from '@/data/site'
 import { ArrowRight, ArrowUpRight } from '@/components/icons'
 import {
-  BrandMockup,
+  CalorieMockup,
   ExpenseMockup,
   FinanceMockup,
+  LibraryMockup,
   UpiMockup,
   WasteMockup,
-  WellnessMockup,
 } from '@/components/mockups'
 import { Reveal, SectionLabel } from '@/components/reveal'
 import {
@@ -36,7 +36,7 @@ function ProjectVisual({ project, large = false }: { project: Project; large?: b
         </>
       )}
 
-      {project.visual === 'brand' && <BrandMockup />}
+      {project.visual === 'library' && <LibraryMockup />}
 
       {project.visual === 'waste' && (
         <>
@@ -74,10 +74,10 @@ function ProjectVisual({ project, large = false }: { project: Project; large?: b
         </>
       )}
 
-      {project.visual === 'wellness' && (
+      {project.visual === 'calorie' && (
         <>
           <div className="absolute inset-0 bg-[radial-gradient(110%_90%_at_85%_10%,#242424_0%,#141414_55%,#0b0b0b_100%)]" />
-          <WellnessMockup
+          <CalorieMockup
             className={cn(
               'top-[15%] right-[7%]',
               large ? 'top-[9%] right-[30%] scale-105' : 'group-hover:-translate-y-2',

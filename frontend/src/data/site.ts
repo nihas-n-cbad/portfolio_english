@@ -59,23 +59,23 @@ export const site = {
       tags: ['React', 'TypeScript', 'PostgreSQL'],
     },
     {
-      title: 'Nexora\nPlatform',
-      category: 'Front-End Engineering',
-      type: 'Next.js · Design System',
-      visual: 'brand',
+      title: 'Library\nManagement\nSystem',
+      category: 'Full-Stack Engineering',
+      type: 'Node · Postgres · Search',
+      visual: 'library',
       year: '2024',
       summary:
-        'A marketing platform for a developer-tools startup: forty shared components, static generation with sub-second loads, and an MDX docs pipeline the team publishes from without touching code.',
-      tags: ['Next.js', 'Design system', 'MDX'],
+        'A circulation system for a college library: catalogue search across twelve thousand titles, member records with loan history, and due-date reminders that cut overdue returns by a third in the first term.',
+      tags: ['React', 'Express', 'PostgreSQL'],
     },
     {
-      title: 'Wellness\nCompanion',
+      title: 'Calorie\nTracker',
       category: 'Mobile Engineering',
-      type: 'React Native · Health',
-      visual: 'wellness',
+      type: 'React Native · Nutrition',
+      visual: 'calorie',
       year: '2024',
       summary:
-        'A cross-platform activity app with background step tracking, offline-first sync against a GraphQL API, and charts that hold 60 fps on mid-range Android hardware.',
+        'A cross-platform nutrition app with a barcode-scanning food log, macro targets that adapt to weekly activity, and an offline-first store that reconciles against a GraphQL API the moment you are back online.',
       tags: ['React Native', 'GraphQL', 'Offline sync'],
     },
     {
